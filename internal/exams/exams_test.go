@@ -72,6 +72,7 @@ func TestAddScore(t *testing.T) {
 }
 
 func TestGetExam(t *testing.T) {
+	setup()
 	exam := CreateExam(1)
 
 	retrievedExam, err := GetExam(1)
@@ -99,6 +100,7 @@ func TestGetExam(t *testing.T) {
 }
 
 func TestGetExams(t *testing.T) {
+	setup()
 	// Populate ExamsMap
 	CreateExam(1)
 	CreateExam(2)
@@ -129,4 +131,9 @@ func TestUpdateAverageScore(t *testing.T) {
 	if exam.AverageScore != 80 {
 		t.Errorf("Expected AverageScore to be 80, got %f", exam.AverageScore)
 	}
+}
+
+func setup() {
+	// clear the map so previous entries don't interfere with tests
+	ExamsMap = make(map[int]*ExamData)
 }

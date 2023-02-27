@@ -36,6 +36,7 @@ func TestExamHandler(t *testing.T) {
 }
 
 func TestExamsHandler(t *testing.T) {
+	setup()
 	rr := httptest.NewRecorder()
 	req, err := http.NewRequest("GET", "/exams", nil)
 	if err != nil {
